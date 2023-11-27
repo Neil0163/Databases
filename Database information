@@ -1,0 +1,10 @@
+To create the database use: 
+
+  brew install postgresql@15
+echo 'export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"' >> ~/.zshrc (dont copy and paste this, youll have a similar link in the terminal)
+
+To start: 
+  brew services start postgresql@15
+
+To restart: 
+  brew services restart postgresql@15
