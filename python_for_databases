@@ -1,0 +1,10 @@
+Models and Repositories
+In the realm of PostgreSQL, we manipulate tables, column names and records. However, in Python programs, we represent data using classes, objects and attributes. We therefore need a way to transform the data retrieved from the database into data that can be used in our program.
+
+To achieve this, you will learn how to build two kind of classes — they're regular Python classes, but designed to achieve a specific purpose in our program:
+
+A Model class is used to hold a record's data.
+For example, if we have a table artists, we'd have a class Artist, with attributes for each column. A single object holds the data for a specific artist record. This class usually doesn't contain any logic, but is only used to hold data.
+
+A Repository class implements methods to run SQL queries on the database to retrieve, create, update or delete data.
+For example, if we have one table artists, we'd have a class ArtistRepository containing methods that communicates with the database using SQL.
