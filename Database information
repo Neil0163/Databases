@@ -1,3 +1,7 @@
+DOWNLOAD TABLE PLUS IT OFFERS GUI
+https://tableplus.com/
+
+
 SETTING UP AND CONNECTING
 
 To create the database use: 
@@ -102,7 +106,24 @@ DELETE FROM [table_name] WHERE [conditions];
 
 To Display all tables: 
   \dt 
-  
+
+INSERTING NEW RECORDS 
+
+We use the INSERT query to create new records in a table. The general syntax is:
+INSERT INTO [table_name]
+  ( [list of columns] )
+  VALUES( [list of values] );
+In the list of columns, we can choose to specify only the columns we need to insert values for.
+For the sake of simplicity, it's best to always specify all columns to insert, except for the id column,
+as it is configured to be generated automatically by PostgreSQL.
+
+Example
+
+-- We don't specify the value for the `id`
+-- column, the database will automatically pick one.
+INSERT INTO artists 
+  (name, genre)
+  VALUES('Massive Attack', 'Alternative');
  
 
 
