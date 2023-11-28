@@ -1,4 +1,4 @@
-Single table design recipe
+********Single table design recipe**********
 
 1. First extract the nouns:
  # EXAMPLE USER STORY:
@@ -40,3 +40,5 @@ CREATE TABLE albums (
 
 5. Create the table
 psql -h 127.0.0.1 database_name < albums_table.sql
+
+----------------------------------------------------------------------------------------------------------------------------------------
