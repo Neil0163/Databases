@@ -31,9 +31,16 @@ To Connect to a DB:
 OR 
   psql -h 127.0.0.1
     /c <databaseName>
+OR 
+
+psql -d <databseName> 
 
 To put a SQL file into a databse:
   psql -h 127.0.0.1 <databsename> < <sql file>
+
+OR 
+
+psql -d <databaseName> -f <path_to_SQL_file> (right click on file in VS code and copy relative path then paste to terminal)
 
 SELECTING
 
