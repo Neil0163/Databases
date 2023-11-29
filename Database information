@@ -107,6 +107,12 @@ DELETE FROM [table_name] WHERE [conditions];
 To Display all tables: 
   \dt 
 
+To list a specific database: 
+  psql -l | grep <database_name>
+
+To list all databases in terminal: 
+  psql -l 
+
 INSERTING NEW RECORDS 
 
 We use the INSERT query to create new records in a table. The general syntax is:
