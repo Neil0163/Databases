@@ -1,0 +1,136 @@
+DOWNLOAD TABLE PLUS IT OFFERS GUI
+https://tableplus.com/
+
+
+SETTING UP AND CONNECTING
+
+To create the database use: 
+
+  brew install postgresql@15
+echo 'export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"' >> ~/.zshrc (dont copy and paste this, youll have a similar link in the terminal)
+
+To start: 
+  brew services start postgresql@15
+
+To restart: 
+  brew services restart postgresql@15
+
+To create a default db for psql to conect too: 
+  createdb <systemName> 
+
+To create a db in tow ways:
+  Enter Repl using psql -h (host) - 127.0.0.1 (Local IP) if you have a connection error see the above
+    CREATE DATABASE music_library; (dont foget semi colon to end sql)
+       You can now exit the REPL with \q
+
+OR
+  createdb music_library (done from terminal without psql)
+
+To Connect to a DB: 
+  psql -h 127.0.0.1 <databasename>
+OR 
+  psql -h 127.0.0.1
+    /c <databaseName>
+
+To put a SQL file into a databse:
+  psql -h 127.0.0.1 <databsename> < <sql file>
+
+SELECTING
+
+The SELECT SQL query is used to retrieve records from a table.
+Here's the general syntax of a SELECT query:
+SELECT [columns to select] FROM [table name];
+SELECT id, title FROM albums;
+
+FILTERING
+We can filter records by adding conditions to the query, with the WHERE keyword. Here's the general syntax:
+SELECT [columns to select] FROM [table name] WHERE [conditions];
+
+Exmaples of filtering
+-- From albums,
+-- filter where id is '2',
+-- and select only values for the columns id, title and release_year.
+SELECT id, title, release_year
+  FROM albums
+  WHERE id = 2;
+
+-- From albums,
+-- filter where title is 'Doolittle',
+-- and select only values for the columns id, title and release_year.
+
+-- Make sure to always use single quotes ('')
+-- to delimitate strings in conditions.
+SELECT id, title, release_year
+  FROM albums
+  WHERE title = 'Doolittle';
+
+-- We can use =, <, <=, >, >=
+-- to compare values.
+
+-- From albums,
+-- filter where release_year is greater than 1990,
+-- and select only values for the columns id, title and release_year.
+SELECT id, title, release_year
+  FROM albums
+  WHERE release_year > 1990;
+
+-- We can use the keywords AND and OR
+-- to combine conditions.
+
+-- From albums,
+-- filter where release_year is greater than 1989 AND artist_id is '1',
+-- and select only values for the columns id, title, release_year and artist_id.
+SELECT id, title, release_year, artist_id
+  FROM albums
+  WHERE release_year > 1989 AND artist_id = 1;
+
+UPDATING DATABASES
+
+The general syntax of the UPDATE query is:
+UPDATE [table_name] SET [column_name] = [new_value];
+And here's an example:
+UPDATE albums SET title = 'A new title';
+However this would update the title for all records, which is usually not what we want.
+Updating specific records
+We can also use the WHERE keyword to specify conditions, like for SELECT queries. Only records matching these conditions will be updated.
+UPDATE [table_name] SET [column_name] = [new_value]
+  WHERE [conditions];
+Example:tableName   columnName
+  UPDATE albums SET release_year ='1972' WHERE id = '3';
+
+DELETING TABLES
+
+The DELETE query has a slightly different syntax, but works in a similar fashion.
+Make sure you always specify conditions when using DELETE (unless you have good reasons not to), to avoid deleting the entire table.
+DELETE FROM [table_name] WHERE [conditions];
+
+To Display all tables: 
+  \dt 
+
+To list a specific database: 
+  psql -l | grep <database_name>
+
+To list all databases in terminal: 
+  psql -l 
+
+INSERTING NEW RECORDS 
+
+We use the INSERT query to create new records in a table. The general syntax is:
+INSERT INTO [table_name]
+  ( [list of columns] )
+  VALUES( [list of values] );
+In the list of columns, we can choose to specify only the columns we need to insert values for.
+For the sake of simplicity, it's best to always specify all columns to insert, except for the id column,
+as it is configured to be generated automatically by PostgreSQL.
+
+Example
+
+-- We don't specify the value for the `id`
+-- column, the database will automatically pick one.
+INSERT INTO artists 
+  (name, genre)
+  VALUES('Massive Attack', 'Alternative');
+ 
+
+
+  
