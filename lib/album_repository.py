@@ -22,6 +22,12 @@ class AlbumRepository:
             albums.append(album)
         return albums
     
+#   
+#4) Create a find method passing arguments refered to place holder in sql
+#   create sql execution includinjg place holder 
+#   create empty list pass first index
+    #return the result ensure to include "row" 
+#       
     def find(self, album_id):
         rows = self._connection.execute("SELECT * FROM albums WHERE id = %s",[album_id]) 
         row =rows [0]
