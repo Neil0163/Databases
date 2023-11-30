@@ -137,6 +137,11 @@ Example
 INSERT INTO artists 
   (name, genre)
   VALUES('Massive Attack', 'Alternative');
+
+
+INSERT INTO movies
+	(title, genres, release_year)
+	VALUES('Die Hard', 'ACTION', '1990')
  
 
 
