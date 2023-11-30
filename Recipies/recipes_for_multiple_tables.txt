@@ -1,0 +1,109 @@
+****EXTRAC NOUNS FROM USER STORY******
+
+# EXAMPLE USER STORY:
+As a blogger
+So I can write interesting stuff
+I want to write posts having a title.
+As a blogger
+So I can write interesting stuff
+I want to write posts having a content.
+As a blogger
+So I can let people comment on interesting stuff
+I want to allow comments on my posts.
+As a blogger
+So I can let people comment on interesting stuff
+I want the comments to have a content.
+As a blogger
+So I can let people comment on interesting stuff
+I want the author to include their name in comments.
+
+Nouns:
+
+post, title, content, 
+comments, comments_content, author_name
+
+******INFER THE TABLE NAMES******
+
+Name of the first table (always plural): posts
+Column names: title, content
+
+Name of the second table (always plural): comments
+Column names: comment, comments_content, author_name
+
+****** DECIDE THE COLUMN TYPE ********
+# EXAMPLE:
+1)Table: posts
+id: SERIAL
+title: text
+content: text
+
+2)Table: comments
+id: SERIAL
+comment: text
+comments_content: text
+author_name: text 
+
+******** CREATE TABLE RELATIONSHIP ********
+
+Most of the time, you'll be using a one-to-many relationship, and will need a foreign key on one of the two tables.
+
+To decide on which one, answer these two questions:
+
+Can one [TABLE ONE] have many [TABLE TWO]? (Yes/No)
+Can one [TABLE TWO] have many [TABLE ONE]? (Yes/No)
+
+
+You'll then be able to say that:
+
+[A] has many [B]
+And on the other side, [B] belongs to [A]
+In that case, the foreign key is in the table [B]
+Replace the relevant bits in this example with your own:
+
+Can one posts have many comments = YES
+Can one comment have many posts = NO 
+
+Comment > many to one > posts
+posts > one to many > Comments 
+
+-> Therefore,
+-> A post HAS MANY comments
+-> A comment BELONGS TO a post
+
+-> Therefore, the foreign key is on the comments (post_id).
+If you can answer YES to the two questions, 
+you'll probably have to implement a Many-to-Many relationship, 
+which is more complex and needs a third table (called a join table).
+
+******** WRITE THE SQL *************
+
+-- EXAMPLE
+-- file: posts.sql
+-- Replace the table name, columm names and types.
+-- Create the table without the foreign key first.
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY,
+  title text,
+  content text
+);
+
+-- Then the table with the foreign key second.
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  comments text,
+  comments_content text,
+  author_name
+
+-- The foreign key name is always {other_table_singular}_id
+  artist_id int,
+  constraint fk_post foreign key(post_id)
+    references posts(id)
+    on delete cascade
+);
+******* CREATE THE TABLE *********
+
+psql -h 127.0.0.1 database_name < albums_table.sql
+
+OR 
+
+createdv -d (TableName) -f (path to seed sql file)
