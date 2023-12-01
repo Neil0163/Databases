@@ -32,4 +32,35 @@ class AlbumRepository:
         rows = self._connection.execute("SELECT * FROM albums WHERE id = %s",[album_id]) 
         row =rows [0]
         return Album (row["id"], row["title"], row["release_year"], row["artist_id"])
+      
+# 5) Create a method for create 
+#    def the method and pass relvant arguments 
+#    write code to execute sql (no variable needed to be set)
+#    INSERT INTO (place to insert to) (colums to be updated) VALUES (relvant amount of placeholders)
+#    [List of relvant colums to be updated]
+#    return none   
+    def create(self, album):
+        self._connection.execute(
+            "INSERT INTO albums (title, release_year, artist_id) VALUES (%s,%s,%s)",
+            [album.title, album.release_year, album.artist_id])
+        return None 
+        
+# Create method for delete 
+# def the method and pass relvant arguments
+# write code to execute sql (no variable needed to be set)
+#    DELETE FROM (place to delete from ) WHERE id = placeholder",
+#    [relvent]
+#  return none  
+    def delete(self, album):
+        self._connection.execute(
+            "DELETE FROM albums WHERE id = %s",
+            [album]
+        )
+        return None
+        
+    
+        
+
+    
+        
         
